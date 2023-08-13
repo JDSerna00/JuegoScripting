@@ -13,6 +13,7 @@ namespace JuegoScripting
         int lives;
         int power;
         float invincibleTime;
+        bool isinvicible;
 
         public void Movement()
         {
