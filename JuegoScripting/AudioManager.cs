@@ -8,5 +8,6 @@ namespace JuegoScripting
 {
     internal class AudioManager
     {
+        AudioSources audioSources;
     }
 }

@@ -1,10 +1,24 @@
 ﻿namespace JuegoScripting
 {
-    internal class Program
+    internal class GameManager
     {
-        static void Main(string[] args)
+        public Player goo;
+        public LevelManager levelManager;
+        bool IsGamePaused;
+
+        public void EndGame()
         {
-            Console.WriteLine("Hello, World!");
+
         }
+        public void PauseGame()
+        {
+
+        }
+
+        public void RestartLevel()
+        {
+
+        }
+           
     }
 }
