@@ -9,5 +9,20 @@ namespace JuegoScripting
     internal class AudioManager
     {
         AudioSources audioSources;
+
+        public void ModifyVol()
+        {
+
+        }
+
+        public void PauseMusic()
+        {
+
+        }
+
+        public void PlayTrack()
+        {
+
+        }
     }
 }
