@@ -8,7 +8,7 @@ namespace JuegoScripting
 {
     internal class AudioManager
     {
-        AudioSources[] audioSources;
+        public Audio[] audioSources;
 
         public void ModifyVol()
         {
