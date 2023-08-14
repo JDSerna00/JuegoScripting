@@ -1,6 +1,15 @@
-public class Track 
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace JuegoScripting
 {
-    public string name;
-    public float volume;
-    public float pitch;
+    public class Track 
+    {
+        public string name;
+        public float volume;
+        public float pitch;
+    }
 }
