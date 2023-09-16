@@ -9,6 +9,7 @@ namespace GameTests
         [SetUp]
         public void Setup()
         {
+
         }
 
         [Test]
@@ -16,18 +17,21 @@ namespace GameTests
         {
             Assert.Pass();
         }
+        [Test]
         public void TestHandleCollision_PlayerHasMorePower()
         {
             // Arrange
             GameManager gameManager = new GameManager();
+            LevelManager levelManager = new LevelManager();
             Player player = new Player(3);
-            Enemy enemy = new Enemy(2); // Enemy con menos poder
+            Enemy enemy = new Enemy(2, levelManager); // Enemy con menos poder
+            int initialLives = enemy.lives;
 
             // Act
             gameManager.HandleCollision(player, enemy);
 
             // Assert          
-            Assert.AreEqual(0, enemy.lives);
+            Assert.Less(enemy.lives,initialLives);
         }
     }
 }

@@ -10,9 +10,10 @@ namespace JuegoScripting
     public class Enemy : Character, IDealDamage
     {
         private LevelManager levelManager;
-        public Enemy(int power) : base(1)
+        public Enemy(int power, LevelManager levelManager) : base(1)
         {
             this.power = power;
+            this.levelManager = levelManager;
         }
 
         public void DealDamage(IDealDamage target)
@@ -33,7 +34,7 @@ namespace JuegoScripting
         }
 
         // Start is called before the first frame update
-        void Start()
+        void AddEnemy()
         {
             levelManager.AddActiveEnemy(this);
         }

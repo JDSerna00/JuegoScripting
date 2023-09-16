@@ -8,6 +8,7 @@ namespace JuegoScripting
 {
     public abstract class Character
     {
+
         public int lives;
         public int power;
 
