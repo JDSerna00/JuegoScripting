@@ -7,30 +7,64 @@ using System.Threading.Tasks;
 
 namespace JuegoScripting
 {
-    internal class Player : IDealDamage
+    public class Player : Character, IDealDamage
     {
-        Vector3 position;
-        int lives;
-        int power;
         float invincibleTime;
-        bool isinvicible;
+        float invincibleAmount = 2.0f;
+        private bool isInvicible;
+
+        public Player(int power) : base(3)
+        {
+            this.power = power;
+        }
 
         public void Movement()
         {
 
         }
 
-        public void PowerUp()
+        public void PowerUp(int powerQuantity)
         {
-
+            power += powerQuantity;
+        }
+        public void DealDamage(IDealDamage target)
+        {
+            if (target is Enemy)
+            {
+                (target as Enemy).TakeDamage(1);
+                power += (target as Enemy).power;
+            }
         }
 
-        void IDealDamage.DealDamage()
+        public new void TakeDamage(int damage)
         {
-            throw new NotImplementedException();
+            if (damage < 0)
+            {
+                if (isInvicible)
+                    return;
+
+                isInvicible = true;
+                invincibleTime = invincibleAmount;
+            }
+
+            if (lives > 0)
+            {
+                lives -= damage;
+            }
+
+            if (lives <= 0)
+            {
+                Destroyed();
+            }
         }
 
-        void IDealDamage.TakeDamage()
+        public void RestartPlayer()
+        {
+            lives = 3;
+            power = 0;
+        }
+
+        public override void Destroyed()
         {
             throw new NotImplementedException();
         }

@@ -7,25 +7,35 @@ using System.Threading.Tasks;
 
 namespace JuegoScripting
 {
-    internal class Enemy : IDealDamage
+    public class Enemy : Character, IDealDamage
     {
-        Vector3 position;
-        int lives;
-        int power;
-
-        public void Destroyed()
+        private LevelManager levelManager;
+        public Enemy(int power) : base(1)
         {
-
+            this.power = power;
         }
 
-        void IDealDamage.DealDamage()
+        public void DealDamage(IDealDamage target)
         {
-            throw new NotImplementedException();
+            if (target is Player)
+            {
+                (target as Player).TakeDamage(1);
+                power += (target as Player).power;
+            }
         }
 
-        void IDealDamage.TakeDamage()
+        public override void Destroyed()
         {
-            throw new NotImplementedException();
+            if (lives == 0)
+            {
+                levelManager.RemoveActiveEnemy(this);
+            }
+        }
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            levelManager.AddActiveEnemy(this);
         }
     }
 }

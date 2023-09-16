@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace JuegoScripting
 {
-    internal class Collectible
+    public class Collectible
     {
         Vector3 position;
         int powerQuantity;
 
-        public void PickUp()
+        public void PickUp(Player player)
         {
-
+            player.PowerUp(powerQuantity);
         }
     }
 }

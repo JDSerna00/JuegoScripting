@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace JuegoScripting
 {
-    internal interface IDealDamage
+    public interface IDealDamage
     {
-        void DealDamage();
-        void TakeDamage();
+        int GetPower();
+        public void DealDamage(IDealDamage target);
+        public void TakeDamage(int damage);
     }
 }

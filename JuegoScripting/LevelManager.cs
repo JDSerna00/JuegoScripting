@@ -6,35 +6,51 @@ using System.Threading.Tasks;
 
 namespace JuegoScripting
 {
-    internal class LevelManager
+    public class LevelManager
     {
-        int actualLevel;
-        private List<Enemy> activeEnemies = new List<Enemy>();
-        private List<Collectible> levelCollectibles = new List<Collectible>();
-        public UIManager uiManager;
+        int actualLevel = 1;
+        public List<Enemy> activeEnemies = new List<Enemy>();
 
-        public void LevelStart() 
+        public void LevelStart()
         {
-
+            LoadLevel(actualLevel);
         }
 
-        public bool EnemiesCleared()
-        {
-            return false;
-        }
 
         public void NextLevel()
         {
             actualLevel++;
+            LoadLevel(actualLevel);
         }
 
-        public void generateEnemies()
+        public void LoadLevel(int level)
         {
-
+            Console.WriteLine($"level {level} loaded");
         }
-        public void GenerateCollectibles() 
+        public void RestartLevel()
         {
+            LoadLevel(actualLevel);
+        }
+        public void AddActiveEnemy(Enemy enemy)
+        {
+            activeEnemies.Add(enemy);
+        }
 
+        public void RemoveActiveEnemy(Enemy enemy)
+        {
+            activeEnemies.Remove(enemy);
+
+            // Verificar si la lista de enemigos está vacía
+            if (activeEnemies.Count == 0)
+            {
+                // Si no hay enemigos activos, avanzar al siguiente nivel
+                NextLevel();
+            }
+        }
+        // Start is called before the first frame update
+        void Start()
+        {
+            LoadLevel(actualLevel);
         }
     }
 }
