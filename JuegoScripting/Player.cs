@@ -12,10 +12,12 @@ namespace JuegoScripting
         float invincibleTime;
         float invincibleAmount = 2.0f;
         private bool isInvicible;
+        private GameManager gameManager;
 
-        public Player(int power) : base(3)
+        public Player(int power, GameManager gameManager) : base(3)
         {
             this.power = power;
+            this.gameManager = gameManager;
         }
 
         public void Movement()
@@ -55,6 +57,7 @@ namespace JuegoScripting
             if (lives <= 0)
             {
                 Destroyed();
+                gameManager.EndGame();
             }
         }
 
