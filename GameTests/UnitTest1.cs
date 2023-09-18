@@ -44,5 +44,18 @@ namespace GameTests
             pickup.PickUp(player);
             Assert.AreEqual(7, player.power);
         }
+
+        [Test]
+
+        public void TestLives()
+        {
+            GameManager gameManager = new GameManager();
+            int LivesNum = 3;
+            var player = new Player (3,gameManager);
+            Assert.AreEqual(LivesNum, player.lives);
+
+        }
+
+
     }
 }
