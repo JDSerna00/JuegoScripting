@@ -11,6 +11,10 @@ namespace JuegoScripting
     {
         Vector3 position;
         int powerQuantity;
+        public Collectible(int powerQuantity)
+        {
+            this.powerQuantity = powerQuantity;
+        }
 
         public void PickUp(Player player)
         {
