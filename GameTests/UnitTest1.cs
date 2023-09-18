@@ -79,5 +79,18 @@ namespace GameTests
 
         }
 
+        [Test]
+        public void TestEnemyDamage()
+        {
+            var levelManager = new LevelManager();
+            var enemy = new Enemy(2, levelManager);
+
+            enemy.TakeDamage(1);
+
+            Assert.AreEqual(0, enemy.lives);
+
+
+
+        }
     }
 }
