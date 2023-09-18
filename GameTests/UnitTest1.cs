@@ -20,17 +20,12 @@ namespace GameTests
         [Test]
         public void TestHandleCollision_PlayerHasMorePower()
         {
-            // Arrange
             GameManager gameManager = new GameManager();
             LevelManager levelManager = new LevelManager();
-            Player player = new Player(3);
+            Player player = new Player(3, gameManager);
             Enemy enemy = new Enemy(2, levelManager); // Enemy con menos poder
             int initialLives = enemy.lives;
-
-            // Act
-            gameManager.HandleCollision(player, enemy);
-
-            // Assert          
+            gameManager.HandleCollision(player, enemy);         
             Assert.Less(enemy.lives,initialLives);
         }
     }
