@@ -56,6 +56,28 @@ namespace GameTests
 
         }
 
+        [Test]
+
+        public void TestDamageHurtPlayer()
+        {
+            GameManager gameManager = new GameManager();
+            var player = new Player(3,gameManager);
+            player.TakeDamage(1);
+            Assert.AreEqual (2, player.lives);
+
+        }
+
+        [Test]
+
+        public void TestInvinciblePlayer()
+        {
+            GameManager gameManager = new GameManager();
+            var player = new Player (3, gameManager);
+            player.TakeDamage(-1);
+            player.TakeDamage(1);
+            Assert.AreEqual(3, player.lives);
+
+        }
 
     }
 }
