@@ -24,6 +24,17 @@ namespace GameTests
         }
 
         [Test]
+        public void TestHandleCollision_EnemyGainsPower()
+        {
+            GameManager gameManager = new GameManager();
+            LevelManager levelManager = new LevelManager();
+            Player player = new Player(2, gameManager);
+            Enemy enemy = new Enemy(3, levelManager); // Enemy con menos poder
+            gameManager.HandleCollision(player, enemy);
+            Assert.AreEqual(5, enemy.power);
+        }
+
+        [Test]
 
         public void TestHandleCollision_PlayerGainsPower()
         {
@@ -64,7 +75,6 @@ namespace GameTests
             var player = new Player(3,gameManager);
             player.TakeDamage(1);
             Assert.AreEqual (2, player.lives);
-
         }
 
         [Test]
