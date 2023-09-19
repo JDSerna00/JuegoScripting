@@ -6,9 +6,13 @@
         public LevelManager levelManager;
         bool IsGamePaused;
 
+        public bool EndGameCalled { get; private set; }
+
         public void EndGame()
         {
             Console.WriteLine("Game Ended");
+
+            EndGameCalled = true;
         }
         public void PauseGame()
         {

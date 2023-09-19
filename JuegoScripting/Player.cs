@@ -69,7 +69,7 @@ namespace JuegoScripting
 
         public override void Destroyed()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Player is dead");
         }
     }
 }

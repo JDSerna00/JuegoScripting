@@ -83,6 +83,21 @@ namespace GameTests
 
         [Test]
 
+        public void TestTakeDamage_EndGame()
+        {
+            GameManager gameManager = new GameManager();
+            LevelManager levelManager = new LevelManager();
+            Player player = new Player(3, gameManager);
+
+            player.TakeDamage(player.lives);
+
+            Assert.AreEqual(0, player.lives);
+
+            Assert.IsTrue(gameManager.EndGameCalled);
+        }
+
+        [Test]
+
         public void TestInvinciblePlayer()
         {
             GameManager gameManager = new GameManager();
@@ -132,5 +147,6 @@ namespace GameTests
             Assert.IsFalse(levelManager.activeEnemies.Contains(enemy));
             Assert.AreEqual(0, levelManager.activeEnemies.Count);
         }
+
     }
 }
