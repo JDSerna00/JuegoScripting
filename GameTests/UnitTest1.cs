@@ -7,12 +7,14 @@ namespace GameTests
     public class Tests
     {
         [SetUp]
+
         public void Setup()
         {
 
         }
 
         [Test]
+
         public void TestHandleCollision_EnemyDies()
         {
             GameManager gameManager = new GameManager();
@@ -24,6 +26,7 @@ namespace GameTests
         }
 
         [Test]
+
         public void TestHandleCollision_EnemyGainsPower()
         {
             GameManager gameManager = new GameManager();
@@ -47,6 +50,7 @@ namespace GameTests
         }
 
         [Test]
+
         public void TestPickUp()
         {
             GameManager gameManager = new GameManager();
@@ -90,6 +94,7 @@ namespace GameTests
         }
 
         [Test]
+
         public void TestEnemyDamage()
         {
             var levelManager = new LevelManager();
@@ -99,8 +104,33 @@ namespace GameTests
 
             Assert.AreEqual(0, enemy.lives);
 
+        }
+
+        [Test]
+
+        public void TestAddActiveEnemy()
+        {
+
+            LevelManager levelManager = new LevelManager();
+            Enemy enemy = new Enemy(1, levelManager);
+            levelManager.AddActiveEnemy(enemy);
 
 
+            Assert.Contains(enemy, levelManager.activeEnemies);
+        }
+
+        [Test]
+
+        public void TestRemoveActiveEnemy()
+        {
+
+            LevelManager levelManager = new LevelManager();
+            Enemy enemy = new Enemy(1, levelManager);
+            levelManager.AddActiveEnemy(enemy);
+            levelManager.RemoveActiveEnemy(enemy);
+
+            Assert.IsFalse(levelManager.activeEnemies.Contains(enemy));
+            Assert.AreEqual(0, levelManager.activeEnemies.Count);
         }
     }
 }
